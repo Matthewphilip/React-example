@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './ExpenseForm.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmount] = useState('');
     const [enteredDate, setEnteredDate] = useState('');
@@ -28,7 +28,7 @@ const ExpenseForm = () => {
             date: new Date(enteredDate)
         }
 
-        console.log(expenseData);
+        props.onSaveExpenseData(expenseData); //on submitting it is the expenseData object that will be saved using the onSaveExpenseData prop from NewExpense.js
         setEnteredTitle(''); // we parse enteredTitle into the return value={enteredTitle} below and setEnteredTitle('') allows the entered data to be stored and then the fields in the form to be cleared after submission
         setEnteredAmount('');
         setEnteredDate('')
